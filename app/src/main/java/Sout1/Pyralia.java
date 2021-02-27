@@ -1,17 +1,12 @@
 package Sout1;
 
-public class Sacbleu extends Ptimos implements Helpers{
+public class Pyralia extends Ptimos {
     int stress;
     int dominance;
 
-    // TODO randimise initiall stress and dominance levels
-    public Sacbleu() {
-       super();
-       this.stress = stressLevel();
-       this.dominance = dominanceLevel();
-
+    Pyralia(){
+        super();
     }
-
     // Generating stress level of more then 65 in 75% of cases.
     // Percentage can be adjusted in probability function
     public int stressLevel(){
@@ -27,11 +22,4 @@ public class Sacbleu extends Ptimos implements Helpers{
             return Helpers.randomValue(50, 65);
         } else return Helpers.randomValue(65, 81);
     }
-
-
-
-
-    //abstract void attaque();
-    //abstract void sEloigner();
-    //abstract void attaqueMagique();
 }

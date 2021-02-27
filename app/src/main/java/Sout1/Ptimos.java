@@ -2,13 +2,14 @@ package Sout1;
 
 abstract class Ptimos {
     // possibility to add name attribute to identify by name
-    private int stress;
-    private int dominance;
+    int stress;
+    int dominance;
 
-    Ptimos(int s, int d) {
-        this.stress = s;
-        this.dominance = d;
-    }
+
+    Ptimos() {}
+
+    abstract int stressLevel();
+    abstract  int dominanceLevel();
 
     protected int randomLevel(){
         return (int)Math.round(Math.random()*5);
@@ -45,6 +46,15 @@ abstract class Ptimos {
         }else{
             return "dangereux";
         }
+    }
+
+    public void rugir(){
+        this.dominance +=10;
+        this.stress -=10;
+    }
+
+    public void attaquer(){
+        ;
     }
 
     public void setDominance(int dominance) {
