@@ -28,11 +28,12 @@ interface CliMessages {
     }
 
     static void playerPtimosInfo(Player p, Ptimos ptimos){
-        System.out.format("%s (%d)%n%n", p.name, p.vie);
+        System.out.format("%s (%d)%n%n", p.name, p.life);
         System.out.format("Vous êtes à %dm d'un %s suavage, que souhatitez-vous faire%n", p.getDistance(), ptimos.getClass().getSimpleName());
     }
 
     static void ptimosEscapes(Player p, Ptimos ptimos){
-        System.out.format("Vous êtes à %dm d'un %s suavage, %s e'enfuit !!!%n", p.getDistance(), ptimos.getClass().getSimpleName());
+        System.out.format("Vous êtes à %dm d'un %s suavage, %s e'enfuit !!!%n", p.getDistance(), ptimos.getClass().getSimpleName(), ptimos.getClass().getSimpleName());
+
     }
 }

@@ -2,7 +2,7 @@ package Soutenance1;
 
 public class Player implements Helpers{
     String name = "";
-    int vie ;
+    static int life;
     int cages;
     int flechette;
     int friandise;
@@ -11,14 +11,14 @@ public class Player implements Helpers{
 
     Player(String name) {
         this.name = name;
-        this.vie = 100;
+        this.life = 100;
         this.cages = 10;
         this.flechette = 1;
         this.friandise = 30;
 
         // 8 and 16 corresponds to minimum (inclusive) and maximum (exclusive) values
         // for randomValue to choose between
-        this.distance = Helpers.randomValue(8, 16);
+        this.distance = Helpers.randomValue(8, 15);
 
     }
 
@@ -44,7 +44,20 @@ public class Player implements Helpers{
     //public void fleechette();
     //public void partir();
 
-    public static int getDistance(){
+    protected static int getDistance(){
         return distance;
     }
+
+    protected static void setDistance(int d){
+        distance = d;
+    }
+
+    protected static int getLife(){
+        return life;
+    }
+
+    protected static void setLife(int l){
+        life = l;
+    }
+
 }

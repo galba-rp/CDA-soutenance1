@@ -2,8 +2,8 @@ package Soutenance1;
 
 abstract class Ptimos {
     // possibility to add name attribute to identify by name
-    int stress;
-    int dominance;
+    static int stress;
+    static int dominance;
 
 
     Ptimos() {}
@@ -11,10 +11,12 @@ abstract class Ptimos {
     abstract int stressLevel();
     abstract  int dominanceLevel();
 
-    protected int randomLevel(){
-        return (int)Math.round(Math.random()*5);
+    // checking if ptimios more stressed or more dominant for reaction decision
+    protected static String stressDominanceRatio(){
+        if(stress > dominance){
+            return "stressed";
+        } else return "dominant";
     }
-
     //abstract int lowerStress();
     //abstract int raisedominance();
     //abstract void rugir();
@@ -22,7 +24,9 @@ abstract class Ptimos {
 
     //abstract void attaqueMagique();
 
-
+    protected int getStressNum(){
+        return this.stress;
+    }
 
     public String getStress() {
         if(this.stress <+ 25){
@@ -48,56 +52,30 @@ abstract class Ptimos {
         }
     }
 
-    static void reaction(Player p, Ptimos ptimos){
-        int d = p.getDistance();
-        if(d > 15){
-            escape(p, ptimos);
-        }
 
-        /*
-        int probability = Helpers.probabilityHigh();
-        if(this.stress > this.dominance){
-            if(Player.distance > 3 && Player.distance < 10){
-                if (probability == 1) {
-                    this.rugir();
-                } else {
-                    this.attaquer();
-                }
-            }else if(Player.distance < 3){
-                if (probability  == 1) {
-                    this.attaquer();
-                } else {
-                    this.rugir();
-                }
-            } else{
-                if (probability == 1) {
-                    this.sEloigner();
-                } else {
-                    this.rugir();
-                }
-            }
-        }else if (this.stress > this.dominance && Player.distance < 3) {
-            this.attaquer();
-        }else
 
-         */
-    }
 
     public void rugir(){
         this.dominance = Math.min(this.dominance +10, 100);
         this.stress = Math.max(0, this.stress -10);
     }
 
-    public void attaquer(){
-        ;
+    public static void attack(Player p, Ptimos ptimos){
+        int life = p.getLife();
+        life -=20;
+        Player.setLife(life);
+        ptimos.domin  ance += 5;
     }
 
-    protected void sEloigner(){
-
+    protected static void getAway(Player p){
+        int distance = p.getDistance();
+        distance +=2;
+        Player.setDistance(distance);
     };
 
-    private static void escape(Player p, Ptimos ptimos){
+    protected static void escape(Player p, Ptimos ptimos){
         CliMessages.ptimosEscapes(p, ptimos);
+        Game.startGame();
     }
     public void setDominance(int dominance) {
         this.dominance = dominance;
