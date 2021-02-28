@@ -1,4 +1,4 @@
-package Sout1;
+package Soutenance1;
 
 abstract class Ptimos {
     // possibility to add name attribute to identify by name
@@ -19,7 +19,7 @@ abstract class Ptimos {
     //abstract int raisedominance();
     //abstract void rugir();
     //abstract void attaque();
-    //abstract void sEloigner();
+
     //abstract void attaqueMagique();
 
 
@@ -48,16 +48,59 @@ abstract class Ptimos {
         }
     }
 
+    static void reaction(Player p, Ptimos ptimos){
+        int d = p.getDistance();
+        if(d > 15){
+            escape(p, ptimos);
+        }
+
+        /*
+        int probability = Helpers.probabilityHigh();
+        if(this.stress > this.dominance){
+            if(Player.distance > 3 && Player.distance < 10){
+                if (probability == 1) {
+                    this.rugir();
+                } else {
+                    this.attaquer();
+                }
+            }else if(Player.distance < 3){
+                if (probability  == 1) {
+                    this.attaquer();
+                } else {
+                    this.rugir();
+                }
+            } else{
+                if (probability == 1) {
+                    this.sEloigner();
+                } else {
+                    this.rugir();
+                }
+            }
+        }else if (this.stress > this.dominance && Player.distance < 3) {
+            this.attaquer();
+        }else
+
+         */
+    }
+
     public void rugir(){
-        this.dominance +=10;
-        this.stress -=10;
+        this.dominance = Math.min(this.dominance +10, 100);
+        this.stress = Math.max(0, this.stress -10);
     }
 
     public void attaquer(){
         ;
     }
 
+    protected void sEloigner(){
+
+    };
+
+    private static void escape(Player p, Ptimos ptimos){
+        CliMessages.ptimosEscapes(p, ptimos);
+    }
     public void setDominance(int dominance) {
         this.dominance = dominance;
     }
 }
+

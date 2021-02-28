@@ -1,4 +1,4 @@
-package Sout1;
+package Soutenance1;
 
 public class Sacbleu extends Ptimos implements Helpers{
     int stress;
@@ -6,9 +6,9 @@ public class Sacbleu extends Ptimos implements Helpers{
 
     // TODO randimise initiall stress and dominance levels
     public Sacbleu() {
-       super();
-       this.stress = stressLevel();
-       this.dominance = dominanceLevel();
+        super();
+        this.stress = stressLevel();
+        this.dominance = dominanceLevel();
 
     }
 

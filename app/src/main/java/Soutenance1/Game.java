@@ -1,8 +1,8 @@
-package Sout1;
+package Soutenance1;
 
 import java.util.Scanner;
 
-public class Game implements CliMessages{
+public class Game implements CliMessages {
     Player player;
     Ptimos ptimos;
     Scanner input = new Scanner(System.in);
@@ -27,7 +27,7 @@ public class Game implements CliMessages{
 
     private void startGame(){
         CliMessages.hello(player);
-        this.ptimos = new Sacbleu(); // TODO add factory method
+        this.ptimos = PtimosFactory.createPtimos(); // TODO add factory method
         System.out.println("stress : " + ptimos.stress +", Dominance : " + ptimos.dominance);
 
         // meeting Ptimos choices
@@ -49,8 +49,10 @@ public class Game implements CliMessages{
         switch (s1){
             case "1":
                 player.observer(ptimos);
+                Ptimos.reaction(player, ptimos);
                 break;
             default: break;
         }
     }
 }
+

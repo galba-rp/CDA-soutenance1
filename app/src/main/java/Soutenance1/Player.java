@@ -1,6 +1,4 @@
-package Sout1;
-
-import java.util.Random;
+package Soutenance1;
 
 public class Player implements Helpers{
     String name = "";
@@ -8,10 +6,10 @@ public class Player implements Helpers{
     int cages;
     int flechette;
     int friandise;
-    int distance;
+    private static int  distance;
 
 
-   Player(String name) {
+    Player(String name) {
         this.name = name;
         this.vie = 100;
         this.cages = 10;
@@ -19,14 +17,14 @@ public class Player implements Helpers{
         this.friandise = 30;
 
         // 8 and 16 corresponds to minimum (inclusive) and maximum (exclusive) values
-       // for randomValue to choose between
+        // for randomValue to choose between
         this.distance = Helpers.randomValue(8, 16);
 
     }
 
     public void observer(Ptimos p){
-       String name  = p.getClass().getSimpleName();
-       System.out.format("%s semble %s et %s%n", name, p.getStress(), p.getDominance());
+        String name  = p.getClass().getSimpleName();
+        System.out.format("%s semble %s et %s%n", name, p.getStress(), p.getDominance());
 
     };
 
@@ -46,4 +44,7 @@ public class Player implements Helpers{
     //public void fleechette();
     //public void partir();
 
+    public static int getDistance(){
+        return distance;
+    }
 }
