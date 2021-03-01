@@ -4,16 +4,16 @@ public class Player implements Helpers{
     String name = "";
     static int life;
     int cages;
-    int flechette;
-    int friandise;
+    int arrow;
+    int treats;
 
 
     Player(String name) {
         this.name = name;
         this.life = 100;
         this.cages = 10;
-        this.flechette = 1;
-        this.friandise = 30;
+        this.arrow = 1;
+        this.treats = 30;
 
 ;    }
 
@@ -42,16 +42,22 @@ public class Player implements Helpers{
 
     public void dance(Ptimos ptimos){
         int d = ptimos.getDominanceNum();
+        System.out.format("CURRENT DOMINANCE %d%n",d);
+        System.out.format("DOMINANCE equels" + (d - Helpers.randomValue(7, 22)) + "%n");
         ptimos.setDominance(d - Helpers.randomValue(7, 22));
     }
     public void arrow(Player p,Ptimos ptimos){
-        int chance = Helpers.randomValue(0, 2);
-        if (chance == 1){
-            Game.ptimosInTOCage(ptimos);
-            CliMessages.captured(ptimos);
-            p.setLife(100);
-            Game.startGame();
-        }
+        if(arrow == 1 ) {
+            arrow = 0;
+            int chance = Helpers.randomValue(0, 2);
+            System.out.println("CHANCEEEE :" + chance);
+            if (chance == 1) {
+                Game.ptimosInTOCage(ptimos);
+                CliMessages.captured(ptimos);
+                p.setLife(100);
+                Game.startGame();
+            } else CliMessages.missed();
+        } else CliMessages.noMoreArrows();
     }
     //public void partir();
 

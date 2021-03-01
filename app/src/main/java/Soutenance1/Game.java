@@ -55,7 +55,9 @@ public class Game implements CliMessages {
             }
             // interacting with Ptimos
             CliMessages.playerPtimosInfo(player, ptimos);
+            CliMessages.ptimosInfo(ptimos);
             CliMessages.actions(player, ptimos);
+
             s1 = input.nextLine();
             switch (s1) {
                 case "1":

@@ -116,29 +116,29 @@ public class Combo {
             if(counter > 0){
                 result = "flush";
             }else if(cValues.get(0) == 10){
-                result = "La quinte flush royale";
-            }else  result = "La quinte flush";
+                result = "quinte flush royale";
+            }else  result = "quinte flush";
         } else {
             int value = 0;
             switch (valuesMap.keySet().size()){
                 case 2:
                     value = sameValuesCheck();
-                    result = (value == 0) ?"Le carre" : "Le full";
+                    result = (value == 0) ?"carre" : "full";
                     break;
                 case 3:
                     value = sameValuesCheck();
-                    result = (value == 2) ? "La double paire" : " Le brelan";
+                    result = (value == 2) ? "double paire" : "brelan";
                     break;
                 case 4:
-                    result = "La paire";
+                    result = "paire";
                     break;
                 default:
                     //System.out.println(cValues);
                     counter = valuesOrderCheck();
                     if(counter == 0){
-                        result = "La suite";
+                        result = "suite";
                     } else{
-                        result  = "La carte haute";
+                        result  = "carte haute";
                     }
             }
         }

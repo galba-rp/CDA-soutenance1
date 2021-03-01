@@ -1,5 +1,8 @@
 package Soutenance1;
 
+import Poker.Combo;
+import Poker.Deal;
+
 public class Pokrand extends Ptimos{
 
     Pokrand(){
@@ -25,12 +28,34 @@ public class Pokrand extends Ptimos{
     }
 
     // reduces player's life
-
+//TODO add messages with cardds and result
     public static void magic(Player p, Ptimos ptimos){
-        cards();
+        Deal deal = new Deal();
+        String hand = deal.getHand();
+        Combo hand1 = new Combo(hand);
+        String result = hand1.getHighestCombo();
+        switch (result){
+            case "brelan":
+            case "quinte flush":
+            case "flush":
+                CliMessages.pokerandEscapes();
+                Game.startGame();
+                break;
+            case "paire":
+            case "double paire":
+                Ptimos.magic(p, ptimos);
+                break;
+            case "carte haute":
+                ptimos.reduceDominance(10);
+                break;
+            default:
+                CliMessages.pokerandWins();
+                Game.startGame();
+        }
     }
 
-    private static void cards(){
+    private static void cardsResultReaction(){
+
 
     }
 }

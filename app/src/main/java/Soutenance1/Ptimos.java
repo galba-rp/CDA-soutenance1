@@ -55,8 +55,8 @@ abstract class Ptimos {
         return dominance;
     }
 
-    public static void setDominance(int dominance) {
-        dominance = dominance;
+    public static void setDominance(int dom) {
+        dominance = dom;
     }
 
     public static void roar(Ptimos ptimos){
@@ -65,11 +65,21 @@ abstract class Ptimos {
         CliMessages.roar(ptimos);
     }
 
+    protected static void reduceDominance(int n){
+        dominance = dominance-n;
+    }
+
+
+    protected void raiseStress(Ptimos ptimos){
+        int stress = ptimos.getStressNum();
+        ptimos.setStress(stress + 10);
+    }
+
     public static void attack(Player p, Ptimos ptimos){
         int life = p.getLife();
         life -=20;
         Player.setLife(life);
-        ptimos.dominance += 100;
+        ptimos.dominance += 50;
         CliMessages.attack(ptimos);
     }
 
@@ -88,11 +98,6 @@ abstract class Ptimos {
     protected static void escape(Player p, Ptimos ptimos){
         CliMessages.ptimosEscapes(p, ptimos);
         Game.startGame();
-    }
-
-    protected void raiseStress(Ptimos ptimos){
-        int stress = ptimos.getStressNum();
-        ptimos.setStress(stress + 10);
     }
 
     //TODO refactor for single responsibility
