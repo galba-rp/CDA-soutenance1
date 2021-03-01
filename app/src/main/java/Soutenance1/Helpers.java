@@ -24,5 +24,21 @@ interface Helpers {
         } else return 0;
     }
 
+    static int probabilityLow(){
+        int random = randomValue(0, 100);
+        if(random<10) {
+            return 1;
+        } else return 0;
+    }
+
+    static int reduceStressWithTreat(int distance){
+        if (distance > 10){
+            return probabilityLow();
+        } else if(distance > 5){
+            return probabilityTwoToOne();
+        } else return probabilityHigh();
+    }
+
+
 
 }

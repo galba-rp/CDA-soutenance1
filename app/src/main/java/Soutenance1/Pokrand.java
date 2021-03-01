@@ -1,11 +1,11 @@
 package Soutenance1;
 
 public class Pokrand extends Ptimos{
-    int stress;
-    int dominance;
 
     Pokrand(){
         super();
+        this.stress = stressLevel();
+        this.dominance = dominanceLevel();
     }
 
     // Generating stress level of less then 65 in 75% of cases.
@@ -22,5 +22,15 @@ public class Pokrand extends Ptimos{
         if(Helpers.probabilityHigh() == 1){
             return Helpers.randomValue(75, 81);
         } else return Helpers.randomValue(50, 65);
+    }
+
+    // reduces player's life
+
+    public static void magic(Player p, Ptimos ptimos){
+        cards();
+    }
+
+    private static void cards(){
+
     }
 }

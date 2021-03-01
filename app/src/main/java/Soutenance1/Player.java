@@ -1,12 +1,11 @@
 package Soutenance1;
-
+//TODO add messages for actions taken and their success
 public class Player implements Helpers{
     String name = "";
     static int life;
     int cages;
     int flechette;
     int friandise;
-    private static int  distance;
 
 
     Player(String name) {
@@ -16,41 +15,49 @@ public class Player implements Helpers{
         this.flechette = 1;
         this.friandise = 30;
 
-        // 8 and 16 corresponds to minimum (inclusive) and maximum (exclusive) values
-        // for randomValue to choose between
-        this.distance = Helpers.randomValue(8, 15);
-
-    }
+;    }
 
     public void observer(Ptimos p){
         String name  = p.getClass().getSimpleName();
-        System.out.format("%s semble %s et %s%n", name, p.getStress(), p.getDominance());
-
     };
 
-    public void approcher(Ptimos p){
+    public void approach(Ptimos p){
         String name  = p.getClass().getSimpleName();
+        int d = Game.getDistance();
         int dist  = Helpers.randomValue(3, 9);
-        this.distance = this.distance - dist;
-        if (this.distance <= 0){
+        Game.setDistance(d - dist);
+        /*
+        if (d <= 0){
             System.out .println("Ptimos dans la cage");
         }else{
-            System.out .println("Tu est à " +this.distance + "metres de "+ name);
+            System.out .println("Tu est à " +d + "metres de "+ name);
+        }
+         */
+    }
+
+    public void treat(Ptimos ptimos, int d){
+        if(Helpers.reduceStressWithTreat(d) == 1){
+            int stress = ptimos.getStressNum();
+            ptimos.setStress( stress - 15);
         }
     }
 
-    //public void friandise();
-    //public void danser();
-    //public void fleechette();
+    public void dance(Ptimos ptimos){
+        int d = ptimos.getDominanceNum();
+        ptimos.setDominance(d - Helpers.randomValue(7, 22));
+    }
+    public void arrow(Player p,Ptimos ptimos){
+        int chance = Helpers.randomValue(0, 2);
+        if (chance == 1){
+            Game.ptimosInTOCage(ptimos);
+            CliMessages.captured(ptimos);
+            p.setLife(100);
+            Game.startGame();
+        }
+    }
     //public void partir();
 
-    protected static int getDistance(){
-        return distance;
-    }
 
-    protected static void setDistance(int d){
-        distance = d;
-    }
 
     protected static int getLife(){
         return life;

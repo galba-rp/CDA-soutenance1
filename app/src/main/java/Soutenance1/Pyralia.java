@@ -1,11 +1,12 @@
 package Soutenance1;
 
 public class Pyralia extends Ptimos {
-    int stress;
-    int dominance;
+
 
     Pyralia(){
         super();
+        this.stress = stressLevel();
+        this.dominance = dominanceLevel();
     }
     // Generating stress level of less then 65 in 75% of cases.
     // Percentage can be adjusted in probability function
