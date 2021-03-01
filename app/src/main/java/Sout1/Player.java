@@ -23,7 +23,7 @@ public class Player {
 
     }
 
-    public void observer(Ptimos p){
+    public void observe(Ptimos p){
        String name  = p.getClass().getSimpleName();
        System.out.format("Niveax de stress de %1$s est: %2$s\n", name, p.getStress());
         System.out.format("Niveax de dominance est: %s\n", p.getDominance());
