@@ -19,7 +19,7 @@ abstract class Ptimos {
     }
 
     public String getStress() {
-        if(this.stress <+ 25){
+        if(this.stress <= 25){
             return "detandu";
         } else if(this.stress > 25 && this.stress <= 50){
             return "mefiant";
@@ -39,7 +39,7 @@ abstract class Ptimos {
     }
 
     public String getDominance() {
-        if(this.dominance <+ 25){
+        if(this.dominance <= 25){
             return "innoffensif";
         } else if(this.dominance > 25 && this.stress <= 50){
             return "neutre";
