@@ -64,11 +64,10 @@ abstract class Ptimos {
         stress = Math.max(0, ptimos.stress -10);
         CliMessages.roar(ptimos);
     }
-
+//TODO add raiseDominance method and reduceStress and refactor where needed
     protected static void reduceDominance(int n){
         dominance = dominance-n;
     }
-
 
     protected void raiseStress(Ptimos ptimos){
         int stress = ptimos.getStressNum();
