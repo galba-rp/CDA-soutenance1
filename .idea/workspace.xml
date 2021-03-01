@@ -5,23 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e5f1e94-4848-4a4a-be03-f82d55d3f8d1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Sout1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/app/Sout1.app.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/app/Sout1.app.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/app/Sout1.app.test.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/CliMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/CliMessages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Helpers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Pokrand.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Pokrand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Ptimos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Ptimos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/PtimosFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/PtimosFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Pyralia.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Pyralia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Sacbleu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Sacbleu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

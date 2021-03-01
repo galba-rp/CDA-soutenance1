@@ -51,11 +51,11 @@ abstract class Ptimos {
     }
 
     protected static int getDominanceNum(){
-        return this.dominance;
+        return dominance;
     }
 
     public static void setDominance(int dominance) {
-        this.dominance = dominance;
+        dominance = dominance;
     }
 
     public static void roar(Ptimos ptimos){
