@@ -1,4 +1,5 @@
 package Soutenance1;
+import Poker.*;
 
 abstract class Ptimos {
     // possibility to add name attribute to identify by name
@@ -68,13 +69,13 @@ abstract class Ptimos {
         int life = p.getLife();
         life -=20;
         Player.setLife(life);
-        ptimos.dominance += 5;
+        ptimos.dominance += 100;
         CliMessages.attack(ptimos);
     }
 
     static void magic(Player p, Ptimos ptimos) {
         p.setLife(p.getLife() - 25);
-        CliMessages.magickAttack(ptimos);
+        CliMessages.magicAttack(ptimos);
     }
 
     protected static void getAway(Ptimos ptimos){
@@ -87,6 +88,19 @@ abstract class Ptimos {
     protected static void escape(Player p, Ptimos ptimos){
         CliMessages.ptimosEscapes(p, ptimos);
         Game.startGame();
+    }
+
+    protected void raiseStress(Ptimos ptimos){
+        int stress = ptimos.getStressNum();
+        ptimos.setStress(stress + 10);
+    }
+
+    //TODO refactor for single responsibility
+    protected static void cardAttack(){
+         Deal deal = new Deal();
+         String hand = deal.getHand();
+         Combo hand1 = new Combo(hand);
+         String result = hand1.getHighestCombo();
     }
 }
 

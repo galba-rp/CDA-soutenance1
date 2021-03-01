@@ -53,7 +53,7 @@ interface CliMessages {
         System.out.format("%s vient de vous attaquer%n", ptimos.getClass().getSimpleName());
     }
 
-    static void magickAttack(Ptimos ptimos){
+    static void magicAttack(Ptimos ptimos){
         System.out.format("%s vient de lancer une  attaque magique%n", ptimos.getClass().getSimpleName());
     }
 }

@@ -23,9 +23,7 @@ public class Player implements Helpers{
 
     public void approach(Ptimos p){
         String name  = p.getClass().getSimpleName();
-        int d = Game.getDistance();
-        int dist  = Helpers.randomValue(3, 9);
-        Game.setDistance(d - dist);
+        reduceDisatnce();
         /*
         if (d <= 0){
             System.out .println("Ptimos dans la cage");
@@ -67,4 +65,16 @@ public class Player implements Helpers{
         life = l;
     }
 
+    private void reduceDisatnce(){
+        int d = Game.getDistance();
+        int dist  = Helpers.randomValue(3, 9);
+        Game.setDistance(d - dist);
+    }
+
+    void checkDistance(Ptimos ptimos){
+        if(Game.getDistance() <= 1){
+            CliMessages.captured(ptimos);
+            Game.startGame();
+        }
+    }
 }
