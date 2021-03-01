@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5edbefd1-d6fb-4ade-97e6-5901188d7519" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/test/java/Soutenance1/PtimosTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/CliMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/CliMessages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Ptimos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Ptimos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/Soutenance1/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/Soutenance1/AppTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="5edbefd1-d6fb-4ade-97e6-5901188d7519" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
