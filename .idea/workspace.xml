@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="5edbefd1-d6fb-4ade-97e6-5901188d7519" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="0e5f1e94-4848-4a4a-be03-f82d55d3f8d1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Ptimos.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/Soutenance1/Ptimos.java" afterDir="false" />
+    </list>
+>>>>>>> b05e989d05b46f428eb66b73716bb9eeeacaa19f
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +33,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1p7GeGQNzfK4IYn0JROZuoY38FT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -34,9 +41,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Sout1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
@@ -48,8 +56,9 @@
   </component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Soutenance1.App" />
-      <module name="Soutenance1.app.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Soutenance1.*" />
@@ -69,7 +78,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5edbefd1-d6fb-4ade-97e6-5901188d7519" name="Default Changelist" comment="" />
+      <changelist id="0e5f1e94-4848-4a4a-be03-f82d55d3f8d1" name="Default Changelist" comment="" />
       <created>1614526808895</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -87,5 +96,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

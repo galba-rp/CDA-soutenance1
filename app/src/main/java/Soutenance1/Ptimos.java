@@ -17,16 +17,6 @@ abstract class Ptimos {
             return "stressed";
         } else return "dominant";
     }
-    //abstract int lowerStress();
-    //abstract int raisedominance();
-    //abstract void rugir();
-    //abstract void attaque();
-
-    //abstract void attaqueMagique();
-
-    protected int getStressNum(){
-        return this.stress;
-    }
 
     public String getStress() {
         if(this.stress <+ 25){
@@ -40,45 +30,63 @@ abstract class Ptimos {
         }
     }
 
+    protected int getStressNum(){
+        return this.stress;
+    }
+
+    protected void setStress(int n){
+        this.stress = n;
+    }
+
     public String getDominance() {
         if(this.dominance <+ 25){
             return "innoffensif";
         } else if(this.dominance > 25 && this.stress <= 50){
             return "neutre";
         }else if (this.dominance > 51 && this.stress <= 75){
-            return "féroce";
+            return "feroce";
         }else{
             return "dangereux";
         }
     }
 
+    protected static int getDominanceNum(){
+        return dominance;
+    }
 
+    public static void setDominance(int dominance) {
+        dominance = dominance;
+    }
 
-
-    public void rugir(){
-        this.dominance = Math.min(this.dominance +10, 100);
-        this.stress = Math.max(0, this.stress -10);
+    public static void roar(Ptimos ptimos){
+        dominance = Math.min(ptimos.dominance +10, 100);
+        stress = Math.max(0, ptimos.stress -10);
+        CliMessages.roar(ptimos);
     }
 
     public static void attack(Player p, Ptimos ptimos){
         int life = p.getLife();
         life -=20;
         Player.setLife(life);
-        ptimos.domin  ance += 5;
+        ptimos.dominance += 5;
+        CliMessages.attack(ptimos);
     }
 
-    protected static void getAway(Player p){
-        int distance = p.getDistance();
+    static void magic(Player p, Ptimos ptimos) {
+        p.setLife(p.getLife() - 25);
+        CliMessages.magickAttack(ptimos);
+    }
+
+    protected static void getAway(Ptimos ptimos){
+        int distance = Game.getDistance();
         distance +=2;
-        Player.setDistance(distance);
+        Game.setDistance(distance);
+        CliMessages.getAway(ptimos);
     };
 
     protected static void escape(Player p, Ptimos ptimos){
         CliMessages.ptimosEscapes(p, ptimos);
         Game.startGame();
-    }
-    public void setDominance(int dominance) {
-        this.dominance = dominance;
     }
 }
 

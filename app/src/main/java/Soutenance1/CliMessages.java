@@ -29,11 +29,31 @@ interface CliMessages {
 
     static void playerPtimosInfo(Player p, Ptimos ptimos){
         System.out.format("%s (%d)%n%n", p.name, p.life);
-        System.out.format("Vous êtes à %dm d'un %s suavage, que souhatitez-vous faire%n", p.getDistance(), ptimos.getClass().getSimpleName());
+        System.out.format("%s semble %s et %s%n%n", ptimos.getClass().getSimpleName(), ptimos.getStress(), ptimos.getDominance());
+        System.out.format("Vous etes à %dm d'un %s suavage, que souhatitez-vous faire%n", Game.getDistance(), ptimos.getClass().getSimpleName());
     }
 
     static void ptimosEscapes(Player p, Ptimos ptimos){
-        System.out.format("Vous êtes à %dm d'un %s suavage, %s e'enfuit !!!%n", p.getDistance(), ptimos.getClass().getSimpleName(), ptimos.getClass().getSimpleName());
+        System.out.format("Vous etes à %dm d'un %s suavage, %s e'enfuit !!!%n", Game.getDistance(), ptimos.getClass().getSimpleName(), ptimos.getClass().getSimpleName());
+    }
 
+    static void captured(Ptimos ptimos){
+        System.out.format("Un %s dans la cage%n", ptimos.getClass().getSimpleName());
+    }
+
+    static void roar(Ptimos ptimos){
+        System.out.format("%s vient de rugir%n", ptimos.getClass().getSimpleName());
+    }
+
+    static void getAway(Ptimos ptimos){
+        System.out.format("%s vient de s'eloigner%n", ptimos.getClass().getSimpleName());
+    }
+
+    static void attack(Ptimos ptimos){
+        System.out.format("%s vient de vous attaquer%n", ptimos.getClass().getSimpleName());
+    }
+
+    static void magickAttack(Ptimos ptimos){
+        System.out.format("%s vient de lancer une  attaque magique%n", ptimos.getClass().getSimpleName());
     }
 }
