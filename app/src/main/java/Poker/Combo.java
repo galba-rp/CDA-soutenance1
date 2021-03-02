@@ -81,7 +81,6 @@ public class Combo {
             this.cValues.add(Integer.parseInt(numeric));
         }
         Collections.sort(this.cValues);
-
     }
 
     private int sameValuesCheck(){
@@ -94,19 +93,18 @@ public class Combo {
     }
 
     private int valuesOrderCheck(){
-        sortValuesAscending();
         counter = 0;
         for(int i = 1; i < cValues.size(); i++){
             if(cValues.get(i) != (cValues.get(i-1) + 1)) counter++;
             if(counter > 0) i = cValues.size();
         }
-
         return counter;
     }
 
     public String getHighestCombo(){
         createColorsMap();
         createValuesMap();
+        sortValuesAscending();
         counter = valuesOrderCheck();
         if(colorsMap.keySet().size() == 1){
             if(counter > 0){
@@ -129,8 +127,6 @@ public class Combo {
                     result = "paire";
                     break;
                 default:
-                    //System.out.println(cValues);
-                    counter = valuesOrderCheck();
                     if(counter == 0){
                         result = "suite";
                     } else{

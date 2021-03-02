@@ -1,6 +1,7 @@
 package Soutenance1;
 
 
+import java.util.Locale;
 import java.util.Scanner;
 
 
@@ -9,10 +10,11 @@ public class Game implements CliMessages {
     private static Ptimos ptimos;
     private static Scanner input = new Scanner(System.in);
     private static String s1 = "";
-    protected static int Sacbleu= 0;
+    protected static int Sacbleu = 0;
     protected static int Pyralia = 0;
     protected static int Pokrand = 0;
     private static int distance;
+    private static String reaction = "";
 
     public Game() {
         chooseName();
@@ -53,62 +55,72 @@ public class Game implements CliMessages {
         CliMessages.ptimosToMeet(ptimos);
         CliMessages.ptimosInfo(ptimos);
         s1 = input.nextLine().toLowerCase();
-       if(s1.toLowerCase() == "n"){
+       if(s1.toLowerCase().equals("n")){
                 startGame();
         }
         while(player.getLife() > 0) {
             if (distance > 15) {
-                ptimos.escape(player, ptimos);
+               reaction =  ptimos.escape(player, ptimos);
             }
             // interacting with Ptimos
+
             CliMessages.playerPtimosInfo(player, ptimos);
             CliMessages.ptimosInfo(ptimos);
             CliMessages.actions(player, ptimos);
-
             s1 = input.nextLine();
             switch (s1) {
                 case "1":
                     player.observer(ptimos);
                     reaction();
+                    messageAfterReaction();
                     break;
                 case "2":
                     player.approach(ptimos);
                     ptimos.raiseStress(10);
-                    player.checkDistance(ptimos);
                     reaction();
+                    messageAfterReaction();
                     break;
                 case "3":
                     player.treat(ptimos, distance);
                     reaction();
+                    messageAfterReaction();
                     break;
                 case "4":
                     player.dance(ptimos);
                     reaction();
+                    messageAfterReaction();
                     break;
                 case "5":
                     player.arrow(player, ptimos);
                     reaction();
+                    messageAfterReaction();
                     break;
-                default:
+                case "0":
+                    startGame();
                     break;
+                default: break;
             }
+        }
+        CliMessages.youLost();
+        s1 = input.nextLine();
+        if(s1.toLowerCase() == "o"){
+            startGame();
+        } else {
+            CliMessages.bye(player);
+            System.exit(0);
         }
     }
 
     // ptimos reaction depending on distance stress level and dominance level
     protected static void reaction() {
-        if(distance <= 1){
-            ptimosInTOCage(ptimos);
-           CliMessages.captured(ptimos);
-           startGame();
-        }
+        checkDistance(ptimos);
         if (ptimos.getDominanceNum() < 100) {
            if (distance >= 10) {
                 reactionIfDistanceLarge();
             } else if(distance >= 3 && distance < 10) {
                 reactionIfDistancMedium();
             } else reactionIfDistanceShort();
-        } else ptimos.magic(player, ptimos);
+        } else reaction = ptimos.magic(player, ptimos);
     }
 
     private static void reactionIfDistanceLarge(){
@@ -158,11 +170,11 @@ public class Game implements CliMessages {
     // probability to getAway is greater then other actions
     private static void getAwayMoreOftenThanRoarAndAttack(){
         if(Helpers.probabilityHigh() == 1){
-            ptimos.getAway(ptimos);
+           reaction =  ptimos.getAway(ptimos);
         } else {
             if (Helpers.probabilityHigh() == 1) {
-                ptimos.roar(ptimos);
-            } else ptimos.attack(player, ptimos);
+                reaction = ptimos.roar(ptimos);
+            } else reaction = ptimos.attack(player, ptimos);
         }
     }
 
@@ -170,33 +182,34 @@ public class Game implements CliMessages {
     private static void attackOrRoarOrGetAway() {
         switch (Helpers.randomValue(0, 3)) {
             case 0:
-                ptimos.attack(player, ptimos);
+                reaction = ptimos.attack(player, ptimos);
                 break;
             case 1:
-                ptimos.roar(ptimos);
+                reaction = ptimos.roar(ptimos);
                 break;
             default:
-                ptimos.getAway(ptimos);
+                reaction = ptimos.getAway(ptimos);
+                break;
         }
     }
 
     // roar probability is twice greater then attack
     private static void roarMoreOftenThenAttack() {
         if (Helpers.probabilityHigh() == 1) {
-            ptimos.roar(ptimos);
-        } else ptimos.attack(player, ptimos);
+            reaction = ptimos.roar(ptimos);
+        } else reaction = ptimos.attack(player, ptimos);
     }
     // attack probability is twice greater then roar
     private static void attackMoreOftenThenRoar() {
         if (Helpers.probabilityHigh() == 1) {
-            ptimos.attack(player, ptimos);
-        } else ptimos.roar(ptimos);
+            reaction = ptimos.attack(player, ptimos);
+        } else reaction = ptimos.roar(ptimos);
     }
 
     // attack probability is twice greater then roar and getAway
     private static void attackMoreOftenThenRoarAndGetAway() {
         if (Helpers.probabilityHigh() == 1) {
-            ptimos.attack(player, ptimos);
+            reaction = ptimos.attack(player, ptimos);
         } else {
             roarMoreOftenThenGetAway();
         }
@@ -204,45 +217,46 @@ public class Game implements CliMessages {
     // roar probability is twice greater then attack and getAway
     private static void roarMoreOftenThenAttackAndGetAway(){
         if (Helpers.probabilityHigh() == 1) {
-            ptimos.roar(ptimos);
+            reaction = ptimos.roar(ptimos);
         } else attackMoreOftenThenGetAway();
     }
 
     //roar probability is twice greater then  getAway
     private static void roarMoreOftenThenGetAway() {
         if (Helpers.probabilityHigh() == 1) {
-            ptimos.roar(ptimos);
-        } else ptimos.getAway(ptimos);
+            reaction = ptimos.roar(ptimos);
+        } else reaction = ptimos.getAway(ptimos);
     }
 
     //attack probability is twice greater then  getAway
     private static void attackMoreOftenThenGetAway() {
         if (Helpers.probabilityHigh() == 1) {
-            ptimos.attack(player, ptimos);
-        } else ptimos.getAway(ptimos);
+            reaction = ptimos.attack(player, ptimos);
+        } else reaction = ptimos.getAway(ptimos);
     }
 
     // roar and attack probabilities are equal
     private void attackOrRoar() {
         if (Helpers.randomValue(0, 2) == 1) {
-            ptimos.attack(player, ptimos);
-        } else ptimos.roar(ptimos);
+            reaction = ptimos.attack(player, ptimos);
+        } else reaction = ptimos.roar(ptimos);
     }
 
     // probabilities of all 4 possible reactions are equal
     private static void magicAttackPossible() {
         switch (Helpers.randomValue(0, 4)) {
             case 0:
-                ptimos.attack(player, ptimos);
+                reaction = ptimos.attack(player, ptimos);
                 break;
             case 1:
-                ptimos.roar(ptimos);
+                reaction = ptimos.roar(ptimos);
                 break;
             case 2:
-                ptimos.magic(player, ptimos);
+                reaction = ptimos.magic(player, ptimos);
                 break;
             default:
-                ptimos.getAway(ptimos);
+                reaction = ptimos.getAway(ptimos);
+                break;
         }
     }
 
@@ -250,24 +264,25 @@ public class Game implements CliMessages {
         if (Helpers.probabilityHigh() == 1){
             switch (Helpers.randomValue(0, 2)) {
                 case 0:
-                    ptimos.attack(player, ptimos);
+                    reaction = ptimos.attack(player, ptimos);
                     break;
                 default:
-                    ptimos.roar(ptimos);
+                    reaction = ptimos.roar(ptimos);
                     break;
             }
-        } else ptimos.magic(player, ptimos);
+        } else reaction = ptimos.magic(player, ptimos);
     }
     private static void attackMoreOftenThenMagicOrRoar() {
         if (Helpers.probabilityHigh() == 1) {
-            ptimos.attack(player, ptimos);
+            reaction = ptimos.attack(player, ptimos);
         } else {
             switch (Helpers.randomValue(0, 2)) {
                 case 0:
-                    ptimos.roar(ptimos);
+                    reaction = ptimos.roar(ptimos);
                     break;
                 default:
-                    ptimos.magic(player, ptimos);
+                    reaction = ptimos.magic(player, ptimos);
+                    break;
             }
         }
     }
@@ -276,13 +291,13 @@ public class Game implements CliMessages {
             if (Helpers.probabilityHigh() == 1){
                 switch (Helpers.randomValue(0, 2)) {
                     case 0:
-                        ptimos.attack(player, ptimos);
+                        reaction = ptimos.attack(player, ptimos);
                         break;
                     default:
-                        ptimos.getAway(ptimos);
+                        reaction = ptimos.getAway(ptimos);
                         break;
                 }
-            } else ptimos.roar(ptimos);
+            } else reaction = ptimos.roar(ptimos);
         }
 
         static void ptimosInTOCage(Ptimos ptimos){
@@ -307,7 +322,7 @@ public class Game implements CliMessages {
         ptimos = PtimosFactory.createPtimos();;
     }
 
-    private void messageAfterReaction(String reaction){
+    private static void messageAfterReaction(){
         switch (reaction){
             case "roar":
                 CliMessages.roar(ptimos);
@@ -323,10 +338,21 @@ public class Game implements CliMessages {
                 break;
             case "escape":
                 CliMessages.ptimosEscapes(player, ptimos);
-            case "Cards magic attack":
+                break;
+            case "magic Attack":
                 CliMessages.pokerandMagicAttack();
                 break;
-            default: break;
+            default:
+                System.out.println("Default message");
+                break;
+        }
+    }
+
+    private static void checkDistance(Ptimos ptimos){
+        if(distance <= 1){
+            ptimosInTOCage(ptimos);
+            CliMessages.captured(ptimos);
+            startGame();
         }
     }
 

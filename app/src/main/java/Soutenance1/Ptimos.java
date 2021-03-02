@@ -87,59 +87,35 @@ abstract class Ptimos {
     public String roar(Ptimos ptimos){
         raiseDominance(10);
         reduceStress(10);
-        CliMessages.roar(ptimos);// TODO move to method which will display message depending on reaction
+        //CliMessages.roar(ptimos);// TODO move to method which will display message depending on reaction
         return "roar";
     }
 
     public String attack(Player p, Ptimos ptimos){
+        System.out.println("ATACCKKKCKCKCK");
         int life = p.getLife();
         life -=20;
         p.setLife(life);
         ptimos.raiseDominance(20);
-        CliMessages.attack(ptimos);
+        //CliMessages.attack(ptimos);
         return "attack";
     }
 
     protected String magic(Player p, Ptimos ptimos) {
-        /*
+        System.out.println("MAGICCCCCCC    ATACCKKKCKCKCK");
         p.reduceLife(25);
         reduceDominance(20);
-        CliMessages.magicAttack(ptimos);
-
-         */
-        Deal deal = new Deal();
-        String hand = deal.getHand();
-        Combo hand1 = new Combo(hand);
-        String result = hand1.getHighestCombo();
-        switch (result){
-            case "brelan":
-            case "quinte flush":
-            case "flush":
-                CliMessages.pokerandEscapes();
-                Game.startGame();
-                break;
-            case "paire":
-            case "double paire":
-                ptimos.magic(p, ptimos);
-                break;
-            case "carte haute":
-                ptimos.reduceDominance(10);
-                break;
-            default:
-                CliMessages.pokerandWins();
-                Game.startGame();
-        }
-        return "magic Attack";
+        return "magic";
     }
 
     protected String getAway(Ptimos ptimos){
         Game.raiseDistance(2);
-        CliMessages.getAway(ptimos);
+       // CliMessages.getAway(ptimos);
         return "getAway";
     };
 
     protected String escape(Player p, Ptimos ptimos){
-        CliMessages.ptimosEscapes(p, ptimos);
+        //CliMessages.ptimosEscapes(p, ptimos);
         Game.startGame();
         return "escape";
     }

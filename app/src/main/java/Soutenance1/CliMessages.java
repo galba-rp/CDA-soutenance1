@@ -11,7 +11,7 @@ interface CliMessages {
 
     static void ptimosToMeet(Ptimos p){
         System.out.format("Un " + p.getClass().getSimpleName() + " ce cache dans ce bois, voulez-vous le caprturer ?%n" +
-                "[O] - Oui %n" + "[N] - Non %n" + "%n [Q] - Quiter le jeu%n");
+                "[O] - Oui %n" + "[N] - Non %n");
     }
 
     static void actions(Player p, Ptimos ptimos){
@@ -23,8 +23,13 @@ interface CliMessages {
                 "[0] - Laisser le %s.%n", p.treats, p.arrow, ptimos.getClass().getSimpleName());
     }
 
+    static void youLost(){
+        System.out.format("Vous avez perdu %n%n");
+        System.out.format("Voulez-vous recommencer [O] - Oui %n [N] - Non %n%n [Q] - Quiter le jeu%n");
+    }
+
     static void bye(Player p){
-        System.out.format("Good-bye %s %n", p.name);
+        System.out.format("Au revoir %s %n%n", p.name);
     }
 
     static void playerPtimosInfo(Player p, Ptimos ptimos){
@@ -76,5 +81,6 @@ interface CliMessages {
     static void pokerandWins(){
         System.out.format("Pokerand vous assomme et libere les ptimos%n");
     }
+
     static void pokerandMagicAttack(){System.out.format("Pokerand  vient de lancer une  attaque magique%n");}
 }

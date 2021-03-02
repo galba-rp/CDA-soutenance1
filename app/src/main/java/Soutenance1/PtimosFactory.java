@@ -13,6 +13,7 @@ public class PtimosFactory implements Helpers{
             } else return new Pyralia();
         } else {
             int random = Helpers.randomValue(0,3);
+            System.out.println("Random number :" + random);
             switch (random){
                 case 0:
                     return new  Sacbleu();

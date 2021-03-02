@@ -52,8 +52,10 @@ public class Pokrand extends Ptimos{
             default:
                 CliMessages.pokerandWins();
                 Game.startGame();
+                break;
         }
-        return "Cards magic attack";
+        System.out.println("La mains :" + result);
+        return "magic Attack";
     }
 
     private static void cardsResultReaction(){

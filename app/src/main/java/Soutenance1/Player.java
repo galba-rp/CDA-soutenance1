@@ -62,10 +62,4 @@ public class Player implements Helpers{
         life -= n;
     }
 
-    void checkDistance(Ptimos ptimos){
-        if(Game.getDistance() <= 1){
-            CliMessages.captured(ptimos);
-            Game.startGame();
-        }
-    }
 }
