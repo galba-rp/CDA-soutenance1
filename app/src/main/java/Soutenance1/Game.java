@@ -73,9 +73,11 @@ public class Game implements CliMessages {
                     break;
                 case "4":
                     player.dance(ptimos);
+                    reaction();
                     break;
                 case "5":
                     player.arrow(player, ptimos);
+                    reaction();
                     break;
                 default:
                     break;
