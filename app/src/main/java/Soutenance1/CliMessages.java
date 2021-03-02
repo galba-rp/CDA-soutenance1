@@ -20,7 +20,7 @@ interface CliMessages {
                 "[3] - Lancer une friandise(x%d)%n" +
                 "[4] - Faire une danse impresionnante%n"+
                 "[5] - Tirer une flechette endormante (%d)%n%n" +
-                "[0] - Laisser le %s.%n", p.friandise, p.flechette, ptimos.getClass().getSimpleName());
+                "[0] - Laisser le %s.%n", p.treats, p.arrow, ptimos.getClass().getSimpleName());
     }
 
     static void bye(Player p){
@@ -31,6 +31,10 @@ interface CliMessages {
         System.out.format("%s (%d)%n%n", p.name, p.life);
         System.out.format("%s semble %s et %s%n%n", ptimos.getClass().getSimpleName(), ptimos.getStress(), ptimos.getDominance());
         System.out.format("Vous etes à %dm d'un %s suavage, que souhatitez-vous faire%n", Game.getDistance(), ptimos.getClass().getSimpleName());
+    }
+
+    static void ptimosInfo(Ptimos ptimos){
+        System.out.format("Stress  %d  Dominance %d%n%n", ptimos.getStressNum(), ptimos.getDominanceNum());
     }
 
     static void ptimosEscapes(Player p, Ptimos ptimos){
@@ -53,7 +57,23 @@ interface CliMessages {
         System.out.format("%s vient de vous attaquer%n", ptimos.getClass().getSimpleName());
     }
 
-    static void magickAttack(Ptimos ptimos){
+    static void magicAttack(Ptimos ptimos){
         System.out.format("%s vient de lancer une  attaque magique%n", ptimos.getClass().getSimpleName());
+    }
+
+    static void noMoreArrows(){
+        System.out.format("No more arrows left%n");
+    }
+
+    static void missed(){
+        System.out.format("You have missed, No more arrows left%n");
+    }
+
+    static void pokerandEscapes(){
+        System.out.format("Pokerand s'enfuit%n");
+    }
+
+    static void pokerandWins(){
+        System.out.format("Pokerand vous assomme et libere les ptimos");
     }
 }

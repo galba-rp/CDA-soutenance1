@@ -1,4 +1,5 @@
 package Soutenance1;
+import Poker.*;
 
 abstract class Ptimos {
     // possibility to add name attribute to identify by name
@@ -19,7 +20,7 @@ abstract class Ptimos {
     }
 
     public String getStress() {
-        if(this.stress <+ 25){
+        if(this.stress <= 25){
             return "detandu";
         } else if(this.stress > 25 && this.stress <= 50){
             return "mefiant";
@@ -39,7 +40,7 @@ abstract class Ptimos {
     }
 
     public String getDominance() {
-        if(this.dominance <+ 25){
+        if(this.dominance <= 25){
             return "innoffensif";
         } else if(this.dominance > 25 && this.stress <= 50){
             return "neutre";
@@ -54,8 +55,8 @@ abstract class Ptimos {
         return dominance;
     }
 
-    public static void setDominance(int dominance) {
-        dominance = dominance;
+    public static void setDominance(int dom) {
+        dominance = dom;
     }
 
     public static void roar(Ptimos ptimos){
@@ -63,18 +64,27 @@ abstract class Ptimos {
         stress = Math.max(0, ptimos.stress -10);
         CliMessages.roar(ptimos);
     }
+//TODO add raiseDominance method and reduceStress and refactor where needed
+    protected static void reduceDominance(int n){
+        dominance = dominance-n;
+    }
+
+    protected void raiseStress(Ptimos ptimos){
+        int stress = ptimos.getStressNum();
+        ptimos.setStress(stress + 10);
+    }
 
     public static void attack(Player p, Ptimos ptimos){
         int life = p.getLife();
         life -=20;
         Player.setLife(life);
-        ptimos.dominance += 5;
+        ptimos.dominance += 50;
         CliMessages.attack(ptimos);
     }
 
     static void magic(Player p, Ptimos ptimos) {
         p.setLife(p.getLife() - 25);
-        CliMessages.magickAttack(ptimos);
+        CliMessages.magicAttack(ptimos);
     }
 
     protected static void getAway(Ptimos ptimos){
@@ -87,6 +97,14 @@ abstract class Ptimos {
     protected static void escape(Player p, Ptimos ptimos){
         CliMessages.ptimosEscapes(p, ptimos);
         Game.startGame();
+    }
+
+    //TODO refactor for single responsibility
+    protected static void cardAttack(){
+         Deal deal = new Deal();
+         String hand = deal.getHand();
+         Combo hand1 = new Combo(hand);
+         String result = hand1.getHighestCombo();
     }
 }
 

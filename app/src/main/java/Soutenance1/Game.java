@@ -1,6 +1,8 @@
 package Soutenance1;
 
+
 import java.util.Scanner;
+
 
 public class Game implements CliMessages {
     static Player player;
@@ -11,9 +13,6 @@ public class Game implements CliMessages {
     static int Pyralia = 0;
     static int Pokrand = 0;
     private static int distance;
-
-
-
 
     public Game() {
         chooseName();
@@ -56,7 +55,9 @@ public class Game implements CliMessages {
             }
             // interacting with Ptimos
             CliMessages.playerPtimosInfo(player, ptimos);
+            CliMessages.ptimosInfo(ptimos);
             CliMessages.actions(player, ptimos);
+
             s1 = input.nextLine();
             switch (s1) {
                 case "1":
@@ -65,6 +66,8 @@ public class Game implements CliMessages {
                     break;
                 case "2":
                     player.approach(ptimos);
+                    ptimos.raiseStress(ptimos);
+                    player.checkDistance(ptimos);
                     reaction();
                     break;
                 case "3":
@@ -83,9 +86,6 @@ public class Game implements CliMessages {
                     break;
             }
         }
-
-
-
     }
 
     // ptimos reaction depending on distance stress level and dominance level
@@ -96,13 +96,13 @@ public class Game implements CliMessages {
            player.setLife(100);
            startGame();
         }
-        if (ptimos.getDominanceNum() != 100) {
+        if (ptimos.getDominanceNum() < 100) {
            if (distance >= 10) {
                 reactionIfDistanceLarge();
             } else if(distance >= 3 && distance < 10) {
                 reactionIfDistancMedium();
             } else reactionIfDistanceShort();
-        }
+        } else ptimos.magic(player, ptimos);
     }
 
     private static void reactionIfDistanceLarge(){
@@ -292,6 +292,8 @@ public class Game implements CliMessages {
                     break;
             }
         }
+
+
 }
 
 
