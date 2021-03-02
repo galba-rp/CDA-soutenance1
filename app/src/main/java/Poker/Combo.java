@@ -20,10 +20,6 @@ public class Combo {
         this.combo = args;
     }
 
-    public String getCombo() {
-        return combo;
-    }
-
 
     public String[] handFormatting() {
         String arg = this.combo.replaceAll(" ", "");

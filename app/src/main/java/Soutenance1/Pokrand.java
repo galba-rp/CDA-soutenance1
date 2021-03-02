@@ -28,8 +28,9 @@ public class Pokrand extends Ptimos{
     }
 
     // reduces player's life
-//TODO add messages with cardds and result
-    public static void magic(Player p, Ptimos ptimos){
+
+//TODO  refactor for single responsibility and add messages with cards and result
+    public String magic(Player p, Ptimos ptimos){
         Deal deal = new Deal();
         String hand = deal.getHand();
         Combo hand1 = new Combo(hand);
@@ -43,7 +44,7 @@ public class Pokrand extends Ptimos{
                 break;
             case "paire":
             case "double paire":
-                Ptimos.magic(p, ptimos);
+                ptimos.magic(p, ptimos);
                 break;
             case "carte haute":
                 ptimos.reduceDominance(10);
@@ -52,6 +53,7 @@ public class Pokrand extends Ptimos{
                 CliMessages.pokerandWins();
                 Game.startGame();
         }
+        return "Cards magic attack";
     }
 
     private static void cardsResultReaction(){

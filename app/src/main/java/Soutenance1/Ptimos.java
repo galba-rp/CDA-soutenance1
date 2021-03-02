@@ -1,23 +1,19 @@
 package Soutenance1;
-import Poker.*;
+
+import Poker.Combo;
+import Poker.Deal;
 
 abstract class Ptimos {
     // possibility to add name attribute to identify by name
-    static int stress;
-    static int dominance;
+    protected int stress;
+    protected int dominance;
 
 
     Ptimos() {}
 
+    // stress and dominance generators to implement for each type of Ptimos
     abstract int stressLevel();
-    abstract  int dominanceLevel();
-
-    // checking if ptimios more stressed or more dominant for reaction decision
-    protected static String stressDominanceRatio(){
-        if(stress > dominance){
-            return "stressed";
-        } else return "dominant";
-    }
+    abstract int dominanceLevel();
 
     public String getStress() {
         if(this.stress <= 25){
@@ -42,69 +38,110 @@ abstract class Ptimos {
     public String getDominance() {
         if(this.dominance <= 25){
             return "innoffensif";
-        } else if(this.dominance > 25 && this.stress <= 50){
+        } else if(this.dominance > 25 && this.dominance <= 50){
             return "neutre";
-        }else if (this.dominance > 51 && this.stress <= 75){
+        }else if (this.dominance > 51 && this.dominance <= 75){
             return "feroce";
         }else{
             return "dangereux";
         }
     }
 
-    protected static int getDominanceNum(){
-        return dominance;
+    protected int getDominanceNum(){
+        return this.dominance;
     }
 
-    public static void setDominance(int dom) {
-        dominance = dom;
+    protected void setDominance(int dom) {
+        this.dominance = dom;
     }
 
-    public static void roar(Ptimos ptimos){
-        dominance = Math.min(ptimos.dominance +10, 100);
-        stress = Math.max(0, ptimos.stress -10);
-        CliMessages.roar(ptimos);
-    }
 //TODO add raiseDominance method and reduceStress and refactor where needed
-    protected static void reduceDominance(int n){
-        dominance = dominance-n;
+    protected void reduceDominance(int n){
+        this.dominance -= n;
     }
 
-    protected void raiseStress(Ptimos ptimos){
-        int stress = ptimos.getStressNum();
-        ptimos.setStress(stress + 10);
+    protected void raiseDominance(int n){
+        this.dominance += n;
+        this.limitDominance();
     }
 
-    public static void attack(Player p, Ptimos ptimos){
+    protected void raiseStress(int n){
+        stress += n;
+    }
+
+    protected void reduceStress(int n){
+        this.stress -= n;
+        limitStress();
+    }
+
+    private void limitDominance(){
+        dominance = Math.min(dominance, 100);
+        dominance = Math.max(dominance, 0);
+    }
+
+    protected void limitStress(){
+        stress = Math.min(stress, 100);
+        stress = Math.max(stress, 0);
+    }
+
+    public String roar(Ptimos ptimos){
+        raiseDominance(10);
+        reduceStress(10);
+        CliMessages.roar(ptimos);// TODO move to method which will display message depending on reaction
+        return "roar";
+    }
+
+    public String attack(Player p, Ptimos ptimos){
         int life = p.getLife();
         life -=20;
-        Player.setLife(life);
-        ptimos.dominance += 50;
+        p.setLife(life);
+        ptimos.raiseDominance(20);
         CliMessages.attack(ptimos);
+        return "attack";
     }
 
-    static void magic(Player p, Ptimos ptimos) {
-        p.setLife(p.getLife() - 25);
+    protected String magic(Player p, Ptimos ptimos) {
+        /*
+        p.reduceLife(25);
+        reduceDominance(20);
         CliMessages.magicAttack(ptimos);
+
+         */
+        Deal deal = new Deal();
+        String hand = deal.getHand();
+        Combo hand1 = new Combo(hand);
+        String result = hand1.getHighestCombo();
+        switch (result){
+            case "brelan":
+            case "quinte flush":
+            case "flush":
+                CliMessages.pokerandEscapes();
+                Game.startGame();
+                break;
+            case "paire":
+            case "double paire":
+                ptimos.magic(p, ptimos);
+                break;
+            case "carte haute":
+                ptimos.reduceDominance(10);
+                break;
+            default:
+                CliMessages.pokerandWins();
+                Game.startGame();
+        }
+        return "magic Attack";
     }
 
-    protected static void getAway(Ptimos ptimos){
-        int distance = Game.getDistance();
-        distance +=2;
-        Game.setDistance(distance);
+    protected String getAway(Ptimos ptimos){
+        Game.raiseDistance(2);
         CliMessages.getAway(ptimos);
+        return "getAway";
     };
 
-    protected static void escape(Player p, Ptimos ptimos){
+    protected String escape(Player p, Ptimos ptimos){
         CliMessages.ptimosEscapes(p, ptimos);
         Game.startGame();
-    }
-
-    //TODO refactor for single responsibility
-    protected static void cardAttack(){
-         Deal deal = new Deal();
-         String hand = deal.getHand();
-         Combo hand1 = new Combo(hand);
-         String result = hand1.getHighestCombo();
+        return "escape";
     }
 }
 

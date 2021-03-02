@@ -15,53 +15,40 @@ public class Player implements Helpers{
         this.arrow = 1;
         this.treats = 30;
 
-;    }
-
+    }
+//TODO remove unused variable or add message
     public void observer(Ptimos p){
         String name  = p.getClass().getSimpleName();
     };
 
     public void approach(Ptimos p){
-        String name  = p.getClass().getSimpleName();
-        reduceDisatnce();
-        /*
-        if (d <= 0){
-            System.out .println("Ptimos dans la cage");
-        }else{
-            System.out .println("Tu est à " +d + "metres de "+ name);
-        }
-         */
+        Game.reduceDistance(Helpers.randomValue(3, 9));
     }
 
-    public void treat(Ptimos ptimos, int d){
-        if(Helpers.reduceStressWithTreat(d) == 1){
-            int stress = ptimos.getStressNum();
-            ptimos.setStress( stress - 15);
+    // probability of reducing stress varies depending on the distance
+    public void treat(Ptimos ptimos, int distance){
+        if(Helpers.reduceStressWithTreat(distance) == 1){
+            ptimos.reduceStress( 15);
         }
     }
 
+    // dancing reduces dominance by random value
     public void dance(Ptimos ptimos){
-        int d = ptimos.getDominanceNum();
-        System.out.format("CURRENT DOMINANCE %d%n",d);
-        System.out.format("DOMINANCE equels" + (d - Helpers.randomValue(7, 22)) + "%n");
-        ptimos.setDominance(d - Helpers.randomValue(7, 22));
+        ptimos.reduceDominance(Helpers.randomValue(7, 22));
     }
+
+    // arrow has a 50/50 chance to reach a target
     public void arrow(Player p,Ptimos ptimos){
         if(arrow == 1 ) {
-            arrow = 0;
+            arrow = Math.max(arrow--, 0);
             int chance = Helpers.randomValue(0, 2);
-            System.out.println("CHANCEEEE :" + chance);
             if (chance == 1) {
                 Game.ptimosInTOCage(ptimos);
                 CliMessages.captured(ptimos);
-                p.setLife(100);
                 Game.startGame();
             } else CliMessages.missed();
         } else CliMessages.noMoreArrows();
     }
-    //public void partir();
-
-
 
     protected static int getLife(){
         return life;
@@ -71,10 +58,8 @@ public class Player implements Helpers{
         life = l;
     }
 
-    private void reduceDisatnce(){
-        int d = Game.getDistance();
-        int dist  = Helpers.randomValue(3, 9);
-        Game.setDistance(d - dist);
+    protected static void reduceLife(int n){
+        life -= n;
     }
 
     void checkDistance(Ptimos ptimos){

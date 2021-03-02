@@ -31,6 +31,7 @@ interface Helpers {
         } else return 0;
     }
 
+    //
     static int reduceStressWithTreat(int distance){
         if (distance > 10){
             return probabilityLow();

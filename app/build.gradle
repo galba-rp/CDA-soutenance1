@@ -28,3 +28,7 @@ application {
     // Define the main class for the application.
     mainClass = 'Soutenance1.App'
 }
+
+test {
+    useJUnitPlatform()
+}

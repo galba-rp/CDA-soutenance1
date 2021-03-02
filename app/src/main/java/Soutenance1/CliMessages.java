@@ -34,7 +34,7 @@ interface CliMessages {
     }
 
     static void ptimosInfo(Ptimos ptimos){
-        System.out.format("Stress  %d  Dominance %d%n%n", ptimos.getStressNum(), ptimos.getDominanceNum());
+        System.out.format("his Stress : %d  his Dominance : %d%n%n", ptimos.getStressNum(), ptimos.getDominanceNum());
     }
 
     static void ptimosEscapes(Player p, Ptimos ptimos){
@@ -74,6 +74,7 @@ interface CliMessages {
     }
 
     static void pokerandWins(){
-        System.out.format("Pokerand vous assomme et libere les ptimos");
+        System.out.format("Pokerand vous assomme et libere les ptimos%n");
     }
+    static void pokerandMagicAttack(){System.out.format("Pokerand  vient de lancer une  attaque magique%n");}
 }
