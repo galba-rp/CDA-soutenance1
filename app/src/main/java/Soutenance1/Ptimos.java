@@ -6,7 +6,7 @@ import Poker.Deal;
 abstract class Ptimos {
     // possibility to add name attribute to identify by name
     protected int stress;
-    protected int dominance;
+    protected static int dominance;
 
 
     Ptimos() {}
@@ -55,9 +55,8 @@ abstract class Ptimos {
         this.dominance = dom;
     }
 
-//TODO add raiseDominance method and reduceStress and refactor where needed
-    protected void reduceDominance(int n){
-        this.dominance -= n;
+    protected static void reduceDominance(int n){
+        dominance -= n;
     }
 
     protected void raiseDominance(int n){
@@ -87,37 +86,35 @@ abstract class Ptimos {
     public String roar(Ptimos ptimos){
         raiseDominance(10);
         reduceStress(10);
-        //CliMessages.roar(ptimos);// TODO move to method which will display message depending on reaction
         return "roar";
     }
 
     public String attack(Player p, Ptimos ptimos){
-        System.out.println("ATACCKKKCKCKCK");
         int life = p.getLife();
         life -=20;
         p.setLife(life);
         ptimos.raiseDominance(20);
-        //CliMessages.attack(ptimos);
         return "attack";
     }
 
     protected String magic(Player p, Ptimos ptimos) {
-        System.out.println("MAGICCCCCCC    ATACCKKKCKCKCK");
-        p.reduceLife(25);
-        reduceDominance(20);
-        return "magic";
+       return commonMagic(p,ptimos);
     }
 
     protected String getAway(Ptimos ptimos){
         Game.raiseDistance(2);
-       // CliMessages.getAway(ptimos);
         return "getAway";
     };
 
     protected String escape(Player p, Ptimos ptimos){
-        //CliMessages.ptimosEscapes(p, ptimos);
         Game.startGame();
         return "escape";
+    }
+
+    protected static String commonMagic(Player p, Ptimos ptimos){
+        p.reduceLife(25);
+        reduceDominance(20);
+        return "magic";
     }
 }
 

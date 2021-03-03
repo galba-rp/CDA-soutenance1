@@ -53,7 +53,7 @@ public class Game implements CliMessages {
 
         // meeting Ptimos choices
         CliMessages.ptimosToMeet(ptimos);
-        CliMessages.ptimosInfo(ptimos);
+        //CliMessages.ptimosInfo(ptimos);
         s1 = input.nextLine().toLowerCase();
        if(s1.toLowerCase().equals("n")){
                 startGame();
@@ -65,7 +65,7 @@ public class Game implements CliMessages {
             // interacting with Ptimos
 
             CliMessages.playerPtimosInfo(player, ptimos);
-            CliMessages.ptimosInfo(ptimos);
+            //CliMessages.ptimosInfo(ptimos);
             CliMessages.actions(player, ptimos);
             s1 = input.nextLine();
             switch (s1) {

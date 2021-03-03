@@ -2,7 +2,7 @@ package Soutenance1;
 
 interface CliMessages {
     static void chooseName(){
-        System.out.format("Hi choose your name %n");
+        System.out.format("Choisissez votre pseudo %n");
     }
 
     static void hello(Player p){
@@ -25,7 +25,7 @@ interface CliMessages {
 
     static void youLost(){
         System.out.format("Vous avez perdu %n%n");
-        System.out.format("Voulez-vous recommencer [O] - Oui %n [N] - Non %n%n [Q] - Quiter le jeu%n");
+        System.out.format("Voulez-vous recommencer%n [O] - Oui %n[N] - Non %n%n [Q] - Quiter le jeu%n");
     }
 
     static void bye(Player p){
