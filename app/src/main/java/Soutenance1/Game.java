@@ -55,9 +55,9 @@ public class Game implements CliMessages {
         CliMessages.ptimosToMeet(ptimos);
         //CliMessages.ptimosInfo(ptimos);
         s1 = input.nextLine().toLowerCase();
-       if(s1.toLowerCase().equals("n")){
-                startGame();
-        }
+       if(s1.toLowerCase().equals("n")) { //TODO add case and message for input other then oui and Non
+           startGame();
+       }
         while(player.getLife() > 0) {
             if (distance > 15) {
                reaction =  ptimos.escape(player, ptimos);

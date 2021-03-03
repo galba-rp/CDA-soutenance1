@@ -10,13 +10,13 @@ interface CliMessages {
     }
 
     static void ptimosToMeet(Ptimos p){
-        System.out.format("Un " + p.getClass().getSimpleName() + " ce cache dans ce bois, voulez-vous le caprturer ?%n" +
+        System.out.format("Un " + p.getClass().getSimpleName() + " ce cache dans ce bois, voulez-vous le capturer ?%n" +
                 "[O] - Oui %n" + "[N] - Non %n");
     }
 
     static void actions(Player p, Ptimos ptimos){
         System.out.format("[1] - Observer%n" +
-                "[2] - Se raprocher%n"+
+                "[2] - Se rapprocher%n"+
                 "[3] - Lancer une friandise(x%d)%n" +
                 "[4] - Faire une danse impresionnante%n"+
                 "[5] - Tirer une flechette endormante (%d)%n%n" +
@@ -35,7 +35,7 @@ interface CliMessages {
     static void playerPtimosInfo(Player p, Ptimos ptimos){
         System.out.format("%s (%d)%n%n", p.name, p.life);
         System.out.format("%s semble %s et %s%n%n", ptimos.getClass().getSimpleName(), ptimos.getStress(), ptimos.getDominance());
-        System.out.format("Vous etes à %dm d'un %s suavage, que souhatitez-vous faire%n", Game.getDistance(), ptimos.getClass().getSimpleName());
+        System.out.format("Vous etes à %dm d'un %s sauvage, que souhatez-vous faire%n", Game.getDistance(), ptimos.getClass().getSimpleName());
     }
 
     static void ptimosInfo(Ptimos ptimos){
